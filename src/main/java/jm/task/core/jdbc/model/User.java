@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity (name = "users")
+
 @Table
 public class User {
     @Id
@@ -21,7 +21,6 @@ public class User {
     private Byte age;
 
     public User() {
-
     }
 
     public User(String name, String lastName, Byte age) {
