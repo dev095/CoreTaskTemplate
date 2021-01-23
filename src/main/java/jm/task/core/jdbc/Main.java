@@ -11,19 +11,17 @@ public class Main {
         // реализуйте алгоритм здесь
         UserService userService = new UserServiceImpl();
         userService.createUsersTable();
-
+        //добавиим users
         userService.saveUser("Ivan", "Ivanov", (byte) 19);
         userService.saveUser("Petr", "Petrov", (byte) 45);
         userService.saveUser("Alexandr", "Alexandrov", (byte) 27);
         userService.saveUser("Sergey", "Seregin", (byte) 30);
-
         List<User> list = userService.getAllUsers();
-
+        //
         for (User u : list) {
             System.out.println(u);
         }
 
-//        userService.removeUserById(1);
         userService.cleanUsersTable();
         userService.dropUsersTable();
     }
