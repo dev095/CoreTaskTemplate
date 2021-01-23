@@ -8,9 +8,11 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+
         // реализуйте алгоритм здесь
         UserService userService = new UserServiceImpl();
         userService.createUsersTable();
+
         //добавиим users
         userService.saveUser("Ivan", "Ivanov", (byte) 19);
         userService.saveUser("Petr", "Petrov", (byte) 45);
@@ -22,7 +24,7 @@ public class Main {
             System.out.println(u);
         }
 
-        userService.cleanUsersTable();
-        userService.dropUsersTable();
+        userService.cleanUsersTable(); //очистим таблицу
+        userService.dropUsersTable(); //удалим таблицу
     }
 }
