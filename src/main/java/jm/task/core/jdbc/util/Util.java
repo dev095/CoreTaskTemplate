@@ -1,5 +1,6 @@
 package jm.task.core.jdbc.util;
 
+import jm.task.core.jdbc.dao.UserDaoHibernateImpl;
 import jm.task.core.jdbc.model.User;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -57,7 +58,6 @@ public class Util {
                 e.printStackTrace();
             }
         }
-
         return sessionFactory;
     }
 }
