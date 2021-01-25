@@ -2,6 +2,7 @@ package jm.task.core.jdbc.dao;
 
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.util.Util;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -21,8 +22,9 @@ public class UserDaoJDBCImpl implements UserDao {
              Statement statement = connection.createStatement()) {
             statement.execute("CREATE TABLE IF NOT EXISTS " + DB_TABLE + "(id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY , name VARCHAR(35) NOT NULL, " +
                     "lastName VARCHAR(35) NOT NULL, age MEDIUMINT NOT NULL) DEFAULT CHARSET=UTF8");
+            System.out.println("Создание таблицы - OK");
         } catch (Exception e) {
-            System.err.println("Failed to create table.");
+            System.err.println("Создание таблицы - ERROR");
         }
     }
 
@@ -30,8 +32,9 @@ public class UserDaoJDBCImpl implements UserDao {
         try (Connection connection = util.getConnection();
              Statement statement = connection.createStatement()) {
             statement.execute("DROP TABLE IF EXISTS " + DB_TABLE);
+            System.out.println("Удаление таблицы - OK");
         } catch (Exception e) {
-            System.err.println("Failed to drop table.");
+            System.err.println("Удаление таблицы - ERROR");
         }
     }
 
@@ -40,9 +43,9 @@ public class UserDaoJDBCImpl implements UserDao {
              Statement statement = connection.createStatement()) {
             statement.execute("INSERT INTO " + DB_TABLE + "(name , lastName, age) " +
                     " values ('" + name + "', '" + lastName + "', '" + age + "')");
-            System.out.println("User named " + name + " added to database.");
+            System.out.println("Сохранение пользователя " + name + " - OK");
         } catch (Exception e) {
-            System.err.println("Failed to save user.");
+            System.err.println("Сохранение пользователя " + name + " - ERROR");
         }
     }
 
@@ -50,8 +53,9 @@ public class UserDaoJDBCImpl implements UserDao {
         try (Connection connection = util.getConnection();
              Statement statement = connection.createStatement()) {
             statement.executeUpdate("DELETE FROM " + DB_TABLE + " WHERE id = " + id);
+            System.out.println("Удаление пользователя с ID: " + id + " - OK");
         } catch (Exception e) {
-            System.err.println("Failed to delete user.");
+            System.err.println("Удаление пользователя с ID: " + id + " - ERROR");
         }
     }
 
@@ -66,8 +70,9 @@ public class UserDaoJDBCImpl implements UserDao {
                         resultSet.getByte(4));
                 users.add(user);
             }
+            System.out.println("Печать всех пользователей - ОК");
         } catch (Exception e) {
-            System.err.println("Failed to return user list.");
+            System.err.println("Печать всех пользователей - ERROR");
         }
         return users;
     }
@@ -76,8 +81,9 @@ public class UserDaoJDBCImpl implements UserDao {
         try (Connection connection = util.getConnection();
              Statement statement = connection.createStatement()) {
             statement.executeUpdate("TRUNCATE TABLE " + DB_TABLE);
+            System.out.println("Очистка таблицы - ОК");
         } catch (Exception e) {
-            System.err.println("Failed to clear table.");
+            System.err.println("Очистка таблицы - ERROR");
         }
     }
 }
