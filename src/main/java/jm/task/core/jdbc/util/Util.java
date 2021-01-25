@@ -45,7 +45,7 @@ public class Util {
                 properties.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
                 properties.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
                 properties.put(Environment.HBM2DDL_AUTO, "create-drop");
-//                properties.put(Environment.SHOW_SQL, "true");
+                properties.put(Environment.SHOW_SQL, "true");
 
                 configuration.setProperties(properties);
                 configuration.addAnnotatedClass(User.class);
